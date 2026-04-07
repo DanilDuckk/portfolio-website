@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import Header from './components/Header.vue'
 </script>
 
 <template>
-  <header class="flex flex-col items-center justify-center gap-4 py-12 px-4">
-    me
-  </header>
-
- 
+  <main>
+    <Header />
+    <router-view />
+  </main>
 </template>
