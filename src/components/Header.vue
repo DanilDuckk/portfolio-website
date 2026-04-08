@@ -1,32 +1,44 @@
 <script setup lang="ts">
-import { Box, Languages, Minus } from '@lucide/vue'
+import { Languages, Minus } from '@lucide/vue'
+import { useI18n } from 'vue-i18n'
+import { links } from '@/data/links'
+const { locale } = useI18n()
+
+const toggleLanguage = () => {
+  locale.value = locale.value === 'en' ? 'uk' : 'en'
+}
 </script>
 
 <template>
   <header class="flex flex-row justify-between">
     <section class="flex flex-row gap-20 items-center">
-      <router-link to="/" class="text-lg"><h1>Danylo Kurbatov</h1></router-link>
-      <nav class="flex flex-row gap-10 items-center">
-        <router-link to="/about-me" class="text-lg"><p>About Me</p> </router-link>
-        <router-link to="/skills" class="text-lg"><p>Skills</p> </router-link>
-        <router-link to="/experience" class="text-lg"><p>Experience</p> </router-link>
-        <router-link to="/contact" class="text-lg"><p>Contact</p> </router-link>
+      <router-link to="/" class="text-lg"><h1 class="glow-effect">Danylo Kurbatov</h1></router-link>
+      <nav class="flex flex-row gap-10 items-center pt-1">
+        <router-link to="/about-me" class="text-lg"><p class="glow-effect">About Me</p> </router-link>
+        <router-link to="/skills" class="text-lg"><p class="glow-effect">Skills</p> </router-link>
+        <router-link to="/experience" class="text-lg"><p class="glow-effect">Experience</p> </router-link>
+        <router-link to="/contact" class="text-lg"><p class="glow-effect">Contact</p> </router-link>
       </nav>
     </section>
 
-    <section class="flex flex-row gap-10 items-center">
-      <div class="flex flex-row gap-2.5 items-center">
+    <section class="flex flex-row gap-5 items-center">
+      <button @click="toggleLanguage" class="glow-effect flex flex-row gap-2.5 items-center cursor-pointer">
         <Languages class="text-white" />
-        <p>English</p>
-      </div>
+
+        <p>{{ locale === 'en' ? 'Українська' : 'English' }}</p>
+      </button>
       <Minus class="rotate-90 text-white" />
 
-      <a>
-        <Box class="text-white" />
+      <div class="flex flex-row gap-5">
+      <a
+        v-for="social in links"
+        :key="social.link"
+        :href="social.link"
+        target="_blank"
+      >
+        <img :src="social.img" class="w-8 h-8 hover-scale" alt="social link" />
       </a>
-      <a>
-        <Box class="text-white" />
-      </a>
+    </div>
     </section>
   </header>
 </template>

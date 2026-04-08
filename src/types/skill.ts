@@ -1,6 +1,6 @@
 import type { LucideIcon } from '@lucide/vue'
 
-export type Card = {
+export type Skill = {
   title: string
   description: string
   state: string

@@ -1,14 +1,25 @@
-<script setup lang="ts">
-import SkillCard from '@/components/SkillCard.vue'
-
-import { cards } from '@/data/cards'
-</script>
-
 <template>
-  <section class="flex justify-center pt-26">
-    <h1>Skills</h1>
-  </section>
-  <section class="flex flex-row gap-20 justify-center items-center cards-grid">
-    <SkillCard v-for="card in cards" :key="card.title" v-bind="card" />
-  </section>
+  <TransitionGroup
+    tag="section"
+    name="fade-slide"
+    appear
+    class="flex flex-row items-center justify-center min-h-screen gap-20 text-center"
+  >
+    <router-link
+      to="/skills/technical"
+      :key="1"
+      class="cursor-pointer"
+    >
+      <h1 class="glow-effect">{{ $t('skills.technical.title') }}</h1>
+    </router-link>
+
+    <router-link
+      to="/skills/non-technical"
+      :key="2"
+      :style="{ '--delay': '0.2s' }"
+      class="cursor-pointer"
+    >
+      <h1 class="glow-effect">{{ $t('skills.non_technical.title') }}</h1>
+    </router-link>
+  </TransitionGroup>
 </template>

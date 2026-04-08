@@ -27,16 +27,14 @@ p {
 }
 
 /* =======================
-Layout
+Layout and Animation
 ======================= */
 body {
-  /* Збільшуємо розмір фону, щоб було куди "рухатись" */
   background: radial-gradient(circle at 50% 50%, #6b6c70 0%, #555659 45%, #323335 100%);
   background-size: 150% 150%;
   background-attachment: fixed;
 
-  /* Додаємо анімацію */
-  animation: smoothGradient 1s ease infinite alternate;
+  animation: smoothGradient 10s ease infinite alternate;
 
   font-family: 'Montserrat', sans-serif;
   padding: var(--base-padding);
@@ -44,26 +42,32 @@ body {
   margin: 0;
 }
 
-/* Логіка анімації: ми злегка рухаємо центр градієнта */
 @keyframes smoothGradient {
   0% {
     background-position: 50% 50%;
   }
   50% {
-    background-position: 55% 45%; /* Світло зсувається трохи вбік */
+    background-position: 55% 45%;
   }
   100% {
-    background-position: 45% 55%; /* Світло зсувається в інший бік */
+    background-position: 45% 55%;
   }
 }
+
 /* =======================
   Components & Animations
 ======================= */
-.cards-grid {
+.grid {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 40px;
   gap: 20px;
-  align-items: start;
 }
 
 .card {
@@ -130,4 +134,49 @@ body {
   height: auto;
   opacity: 1;
   margin-top: 20px;
+}
+
+/* =======================
+Component Animations
+======================= */
+
+.fade-slide-enter-active {
+  transition: all 0.6s ease-out;
+  transition-delay: var(--delay, 0s);
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.fade-slide-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* =======================
+Text Animations
+======================= */
+.glow-effect {
+  position: relative;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-effect:hover {
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.1);
 }

@@ -1,16 +1,20 @@
-<script setup lang="ts"></script>
-
 <template>
-  <section class="flex flex-col items-center justify-center min-h-screen gap-5 text-center">
-    <h1>Get In Touch!</h1>
-    <p class="">
-      Whether you’re interested in collaborating or just want to<br />
-      say hello, my inbox is always open. Feel free to reach out<br />
-      and I’ll get back to you as soon as possible!
-    </p>
+  <TransitionGroup
+    tag="section"
+    name="fade-slide"
+    appear
+    class="flex flex-col items-center justify-center min-h-screen gap-5 text-center"
+  >
+    <h1 :key="1">
+      {{ $t('header.title') }}
+    </h1>
 
-    <a href="mailto:danylo.kurbatov@gmail.com" class="text-white no-underline">
-      <p class="font-bold!">danylo.kurbatov@gmail.com</p>
+    <p :key="2" v-html="$t('header.description')" :style="{ '--delay': '0.2s' }"></p>
+
+    <a :key="3" href="mailto:danylo.kurbatov@gmail.com"
+       class="relative text-white no-underline group"
+       :style="{ '--delay': '0.4s' }">
+      <p class="font-bold! glow-effect">danylo.kurbatov@gmail.com</p>
     </a>
-  </section>
+  </TransitionGroup>
 </template>
