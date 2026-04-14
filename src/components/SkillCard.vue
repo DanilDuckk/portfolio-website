@@ -7,9 +7,31 @@ const emit = defineEmits(['toggle'])
 
 const bgColor = ref('rgba(0,0,0,0.1)')
 const imgRef = ref<HTMLImageElement | null>(null)
+const startY = ref(0)
+const startX = ref(0)
+const isScrolling = ref(false)
 
-const toggleCard = () => {
-  emit('toggle')
+const MOVE_THRESHOLD = 15 // px
+
+const onPointerDown = (e: PointerEvent) => {
+  startY.value = e.clientY
+  startX.value = e.clientX
+  isScrolling.value = false
+}
+
+const onPointerMove = (e: PointerEvent) => {
+  const deltaY = Math.abs(e.clientY - startY.value)
+  const deltaX = Math.abs(e.clientX - startX.value)
+
+  if (deltaY > MOVE_THRESHOLD || deltaX > MOVE_THRESHOLD) {
+    isScrolling.value = true
+  }
+}
+
+const onPointerUp = () => {
+  if (!isScrolling.value) {
+    emit('toggle')
+  }
 }
 
 const extractColor = () => {
@@ -77,9 +99,11 @@ const extractColor = () => {
 <template>
   <section
     class="select-none card animated-card"
-     :class="{ 'is-active': isActive }"
+    :class="{ 'is-active': isActive }"
     :style="{ backgroundColor: bgColor }"
-    @pointerdown.stop="toggleCard"
+    @pointerdown="onPointerDown"
+    @pointermove="onPointerMove"
+    @pointerup="onPointerUp"
   >
     <img ref="imgRef" :src="img" crossorigin="anonymous" class="card-img" @load="extractColor" />
 
