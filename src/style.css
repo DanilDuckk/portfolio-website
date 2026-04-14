@@ -30,7 +30,7 @@ p {
 Layout and Animation
 ======================= */
 html, body {
-  background-color: radial-gradient(circle at 50% 50%, #6b6c70 0%, #555659 45%, #323335 100%);
+  background-color: var(--main-bg);
 }
 
 body {
@@ -81,6 +81,7 @@ body {
 }
 
 .card {
+  touch-action: manipulation;
   display: flex;
   flex-direction: column;
   border-radius: var(--base-rounded);

@@ -75,7 +75,7 @@ const extractColor = () => {
 </script>
 
 <template>
-  <section class="select-none card animated-card" :style="{ backgroundColor: bgColor }" @click="toggleCard">
+  <section class="select-none card animated-card" :style="{ backgroundColor: bgColor }" @click.stop="toggleCard">
     <img ref="imgRef" :src="img" crossorigin="anonymous" class="card-img" @load="extractColor" />
 
     <div class="flex flex-row items-center justify-between mb-2">
