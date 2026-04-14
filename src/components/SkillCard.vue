@@ -2,14 +2,14 @@
 import { ref } from 'vue'
 import type { Skill } from '@/types/skill'
 
-defineProps<Skill>()
+defineProps<Skill & { isActive: boolean }>()
+const emit = defineEmits(['toggle'])
 
 const bgColor = ref('rgba(0,0,0,0.1)')
 const imgRef = ref<HTMLImageElement | null>(null)
-  const isExpanded = ref(false)
 
 const toggleCard = () => {
-  isExpanded.value = !isExpanded.value
+  emit('toggle')
 }
 
 const extractColor = () => {
@@ -75,7 +75,12 @@ const extractColor = () => {
 </script>
 
 <template>
-  <section class="select-none card animated-card" :style="{ backgroundColor: bgColor }" @click.stop="toggleCard">
+  <section
+    class="select-none card animated-card"
+     :class="{ 'is-active': isActive }"
+    :style="{ backgroundColor: bgColor }"
+    @pointerdown.stop="toggleCard"
+  >
     <img ref="imgRef" :src="img" crossorigin="anonymous" class="card-img" @load="extractColor" />
 
     <div class="flex flex-row items-center justify-between">
