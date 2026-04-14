@@ -11,7 +11,6 @@ const toggleLanguage = () => {
 
 <template>
   <header class="flex flex-col gap-6 md:flex-row md:justify-between md:items-center p-4">
-
     <section class="flex flex-col items-center gap-4 md:flex-row md:gap-10 lg:gap-20">
       <router-link to="/" class="text-lg">
         <h1 class="glow-effect whitespace-nowrap">{{ $t('header.name') }}</h1>
@@ -34,7 +33,10 @@ const toggleLanguage = () => {
     </section>
 
     <section class="flex flex-row justify-center items-center gap-4 md:gap-5">
-      <button @click="toggleLanguage" class="glow-effect flex flex-row gap-2 items-center cursor-pointer">
+      <button
+        @click="toggleLanguage"
+        class="glow-effect flex flex-row gap-2 items-center cursor-pointer"
+      >
         <Languages class="text-white w-5 h-5 md:w-6 md:h-6" />
         <p class="hidden sm:block text-sm md:text-base">
           {{ locale === 'en' ? 'Українська' : 'English' }}

@@ -1,4 +1,15 @@
-import { CodeXml, Wallpaper, Database, Cloud, FileCode, ChartArea, Users, Speech, BriefcaseBusiness, Star } from '@lucide/vue'
+import {
+  CodeXml,
+  Wallpaper,
+  Database,
+  Cloud,
+  FileCode,
+  ChartArea,
+  Users,
+  Speech,
+  BriefcaseBusiness,
+  Star,
+} from '@lucide/vue'
 import type { Skill } from '@/types/skill'
 import AngularImg from '@/assets/skills/Angular.png'
 import VueImg from '@/assets/skills/Vue.png'
@@ -63,7 +74,7 @@ export const technical_skills: Skill[] = [
     img: CloudflareImg,
     icon: Cloud,
   },
-    {
+  {
     title: 'skills.technical.aws.title',
     description: 'skills.technical.aws.description',
     state: 'states.intermediate',
@@ -115,7 +126,7 @@ export const non_technical_skills: Skill[] = [
     img: FigmaImg,
     icon: Wallpaper,
   },
-    {
+  {
     title: 'skills.non_technical.metabase.title',
     description: 'skills.non_technical.metabase.description',
     state: 'states.intermediate',
@@ -149,6 +160,5 @@ export const non_technical_skills: Skill[] = [
     state: 'states.intermediate',
     img: BusinessAnalysisImg,
     icon: BriefcaseBusiness,
-  }
-
+  },
 ]

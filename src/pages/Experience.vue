@@ -17,10 +17,7 @@ import { experiences } from '@/data/experiences'
       :style="{ '--delay': index * 0.3 + 's' }"
       class="w-full max-w-112.5 lg:max-w-none lg:flex-1"
     >
-      <ExperienceCard
-        v-bind="experience"
-        class="hover-scale cursor-pointer"
-      />
+      <ExperienceCard v-bind="experience" class="hover-scale cursor-pointer" />
     </div>
   </TransitionGroup>
 </template>

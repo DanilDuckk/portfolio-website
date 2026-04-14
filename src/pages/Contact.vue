@@ -16,12 +16,13 @@
       v-html="$t('contact.description')"
     ></p>
 
-    <a :key="3" href="mailto:danylo.kurbatov@gmail.com"
-       class="relative text-white no-underline group mt-2"
-       :style="{ '--delay': '0.4s' }">
-      <p class="font-bold! glow-effect break-all sm:break-normal">
-        danylo.kurbatov@gmail.com
-      </p>
+    <a
+      :key="3"
+      href="mailto:danylo.kurbatov@gmail.com"
+      class="relative text-white no-underline group mt-2"
+      :style="{ '--delay': '0.4s' }"
+    >
+      <p class="font-bold! glow-effect break-all sm:break-normal">danylo.kurbatov@gmail.com</p>
     </a>
   </TransitionGroup>
 </template>

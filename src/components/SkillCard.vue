@@ -36,21 +36,23 @@ const extractColor = () => {
     }
   }
 
-  const sortedColors = Object.entries(colorCounts).map(([rgb, count]) => {
-    const [r, g, b] = rgb.split(',').map(Number)
+  const sortedColors = Object.entries(colorCounts)
+    .map(([rgb, count]) => {
+      const [r, g, b] = rgb.split(',').map(Number)
 
-    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
 
-    const score = count * (1 - luminance)
+      const score = count * (1 - luminance)
 
-    return { rgb, score, luminance }
-  }).sort((a, b) => b.score - a.score)
+      return { rgb, score, luminance }
+    })
+    .sort((a, b) => b.score - a.score)
 
   if (sortedColors.length > 0) {
     const topColor = sortedColors[0]
 
     if (topColor.luminance > 0.6) {
-      const [r, g, b] = topColor.rgb.split(',').map(c => Math.floor(Number(c) * 0.7))
+      const [r, g, b] = topColor.rgb.split(',').map((c) => Math.floor(Number(c) * 0.7))
       bgColor.value = `rgb(${r}, ${g}, ${b})`
     } else {
       const [r, g, b] = topColor.rgb.split(',')

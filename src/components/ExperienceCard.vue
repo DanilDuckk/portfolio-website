@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Experience } from '@/types/experience';
+import type { Experience } from '@/types/experience'
 
-defineProps<Experience>();
+defineProps<Experience>()
 </script>
 
 <template>
@@ -10,11 +10,7 @@ defineProps<Experience>();
     :style="{ backgroundColor: bgColor }"
   >
     <div class="flex justify-center items-center p-4 rounded-lg">
-      <img
-        :src="img"
-        crossorigin="anonymous"
-        alt="company logo"
-      />
+      <img :src="img" crossorigin="anonymous" alt="company logo" />
     </div>
 
     <h2 :style="{ color: textColor }">
@@ -31,11 +27,7 @@ defineProps<Experience>();
     </p>
 
     <div class="flex flex-wrap gap-2 mt-auto pt-4">
-      <div
-        v-for="s in stack"
-        :key="s"
-        class="flex justify-center px-3 py-1 bg-black rounded-lg"
-      >
+      <div v-for="s in stack" :key="s" class="flex justify-center px-3 py-1 bg-black rounded-lg">
         <p>{{ s }}</p>
       </div>
     </div>
