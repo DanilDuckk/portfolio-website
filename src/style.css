@@ -29,10 +29,15 @@ p {
 /* =======================
 Layout and Animation
 ======================= */
+html, body {
+  background-color: radial-gradient(circle at 50% 50%, #6b6c70 0%, #555659 45%, #323335 100%);
+}
+
 body {
   background: radial-gradient(circle at 50% 50%, #6b6c70 0%, #555659 45%, #323335 100%);
-  background-size: 150% 150%;
+  background-size: 200% 200%;
   background-attachment: fixed;
+  background-repeat: no-repeat;
 
   animation: smoothGradient 10s ease infinite alternate;
 
@@ -121,17 +126,20 @@ body {
 /* =======================
   Card Animations
 ======================= */
-.card:hover {
+.card:hover,
+.card.is-active {
   max-height: 1000px;
 }
 
-.card:hover .card-img {
+.card:hover .card-img,
+.card.is-active .card-img {
   height: 150px;
   opacity: 1;
   margin-bottom: 20px;
 }
 
-.card:hover .card-state {
+.card:hover .card-state,
+.card.is-active .card-state {
   height: auto;
   opacity: 1;
   margin-top: 20px;
@@ -159,7 +167,8 @@ Component Animations
   transition: transform 0.3s ease;
 }
 
-.hover-scale:hover {
+.hover-scale:hover,
+.active-scale {
   transform: scale(1.05);
 }
 

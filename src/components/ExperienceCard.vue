@@ -1,13 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { Experience } from '@/types/experience'
 
 defineProps<Experience>()
+
+const isTapped = ref(false)
+const toggleTap = () => {
+  isTapped.value = !isTapped.value
+}
 </script>
 
 <template>
   <section
     class="flex flex-col gap-5 p-6 md:p-8 rounded-[10px] transition-all"
     :style="{ backgroundColor: bgColor }"
+    @click="toggleTap"
   >
     <div class="flex justify-center items-center p-4 rounded-lg">
       <img :src="img" crossorigin="anonymous" alt="company logo" />

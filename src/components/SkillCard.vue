@@ -6,6 +6,11 @@ defineProps<Skill>()
 
 const bgColor = ref('rgba(0,0,0,0.1)')
 const imgRef = ref<HTMLImageElement | null>(null)
+  const isExpanded = ref(false)
+
+const toggleCard = () => {
+  isExpanded.value = !isExpanded.value
+}
 
 const extractColor = () => {
   const img = imgRef.value
@@ -25,7 +30,6 @@ const extractColor = () => {
   const colorCounts: Record<string, number> = {}
 
   for (let i = 0; i < imageData.length; i += 4) {
-    // Додаємо fallback значення || 0, щоб уникнути undefined
     const r = imageData[i] ?? 0
     const g = imageData[i + 1] ?? 0
     const b = imageData[i + 2] ?? 0
@@ -52,7 +56,6 @@ const extractColor = () => {
     .sort((a, b) => b.score - a.score)
 
   if (sortedColors.length > 0) {
-    // TypeScript тепер знає, що перший елемент існує через перевірку довжини
     const topColor = sortedColors[0]!
 
     const parts = topColor.rgb.split(',').map(Number)
@@ -72,7 +75,7 @@ const extractColor = () => {
 </script>
 
 <template>
-  <section class="select-none card animated-card" :style="{ backgroundColor: bgColor }">
+  <section class="select-none card animated-card" :style="{ backgroundColor: bgColor }" @click="toggleCard">
     <img ref="imgRef" :src="img" crossorigin="anonymous" class="card-img" @load="extractColor" />
 
     <div class="flex flex-row items-center justify-between mb-2">
