@@ -1,6 +1,6 @@
 import type { Link } from '@/types/link'
 import GithubImg from '@/assets/links/Github.png'
-import LinkedinImg from '@/assets/links/linkedin.png'
+import LinkedinImg from '@/assets/links/Linkedin.png'
 
 export const links: Link[] = [
   {
