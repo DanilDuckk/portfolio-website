@@ -25,10 +25,11 @@ const extractColor = () => {
   const colorCounts: Record<string, number> = {}
 
   for (let i = 0; i < imageData.length; i += 4) {
-    const r = imageData[i]
-    const g = imageData[i + 1]
-    const b = imageData[i + 2]
-    const a = imageData[i + 3]
+    // Додаємо fallback значення || 0, щоб уникнути undefined
+    const r = imageData[i] ?? 0
+    const g = imageData[i + 1] ?? 0
+    const b = imageData[i + 2] ?? 0
+    const a = imageData[i + 3] ?? 0
 
     if (a > 125 && (r < 240 || g < 240 || b < 240)) {
       const key = `${Math.floor(r / 10) * 10},${Math.floor(g / 10) * 10},${Math.floor(b / 10) * 10}`
@@ -38,10 +39,12 @@ const extractColor = () => {
 
   const sortedColors = Object.entries(colorCounts)
     .map(([rgb, count]) => {
-      const [r, g, b] = rgb.split(',').map(Number)
+      const parts = rgb.split(',').map(Number)
+      const r = parts[0] ?? 0
+      const g = parts[1] ?? 0
+      const b = parts[2] ?? 0
 
       const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
-
       const score = count * (1 - luminance)
 
       return { rgb, score, luminance }
@@ -49,15 +52,21 @@ const extractColor = () => {
     .sort((a, b) => b.score - a.score)
 
   if (sortedColors.length > 0) {
-    const topColor = sortedColors[0]
+    // TypeScript тепер знає, що перший елемент існує через перевірку довжини
+    const topColor = sortedColors[0]!
+
+    const parts = topColor.rgb.split(',').map(Number)
+    let r = parts[0] ?? 0
+    let g = parts[1] ?? 0
+    let b = parts[2] ?? 0
 
     if (topColor.luminance > 0.6) {
-      const [r, g, b] = topColor.rgb.split(',').map((c) => Math.floor(Number(c) * 0.7))
-      bgColor.value = `rgb(${r}, ${g}, ${b})`
-    } else {
-      const [r, g, b] = topColor.rgb.split(',')
-      bgColor.value = `rgb(${r}, ${g}, ${b})`
+      r = Math.floor(r * 0.7)
+      g = Math.floor(g * 0.7)
+      b = Math.floor(b * 0.7)
     }
+
+    bgColor.value = `rgb(${r}, ${g}, ${b})`
   }
 }
 </script>
