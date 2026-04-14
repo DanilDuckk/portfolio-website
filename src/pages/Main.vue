@@ -3,7 +3,6 @@
     tag="section"
     name="fade-slide"
     appear
-
     class="flex flex-col lg:flex-row gap-10 lg:gap-20 justify-center items-center min-h-screen p-5"
   >
     <img

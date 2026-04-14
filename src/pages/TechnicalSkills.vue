@@ -1,16 +1,33 @@
 <script setup lang="ts">
 import SkillCard from '@/components/SkillCard.vue'
+import { technical_skills } from '@/data/skills'
+import { computed } from 'vue'
 
-import { skills } from '@/data/skills'
+const COLUMN_COUNT = 3
+
+const columns = computed(() =>
+  Array.from({ length: COLUMN_COUNT }, (_, colIndex) =>
+    technical_skills
+      .map((skill, i) => ({ skill, i }))
+      .filter(({ i }) => i % COLUMN_COUNT === colIndex)
+  )
+)
 </script>
 
 <template>
-  <TransitionGroup tag="section" name="fade-slide" class="grid" appear>
-    <SkillCard
-      v-for="(skill, index) in skills"
-      :key="skill.title"
-      v-bind="skill"
-      :style="{ '--delay': index * 0.1 + 's' }"
-    />
-  </TransitionGroup>
+  <section class="grid">
+    <div class="column" v-for="(col, colIndex) in columns" :key="colIndex">
+      <Transition
+        v-for="{ skill, i } in col"
+        :key="skill.title"
+        name="fade-slide"
+        appear
+      >
+        <SkillCard
+          v-bind="skill"
+          :style="{ '--delay': i * 0.1 + 's' }"
+        />
+      </Transition>
+    </div>
+  </section>
 </template>

@@ -12,12 +12,12 @@ const toggleLanguage = () => {
 <template>
   <header class="flex flex-row justify-between">
     <section class="flex flex-row gap-20 items-center">
-      <router-link to="/" class="text-lg"><h1 class="glow-effect">Danylo Kurbatov</h1></router-link>
+      <router-link to="/" class="text-lg"><h1 class="glow-effect">{{ $t('header.name') }}</h1></router-link>
       <nav class="flex flex-row gap-10 items-center pt-1">
-        <router-link to="/about-me" class="text-lg"><p class="glow-effect">About Me</p> </router-link>
-        <router-link to="/skills" class="text-lg"><p class="glow-effect">Skills</p> </router-link>
-        <router-link to="/experience" class="text-lg"><p class="glow-effect">Experience</p> </router-link>
-        <router-link to="/contact" class="text-lg"><p class="glow-effect">Contact</p> </router-link>
+        <router-link to="/about-me" class="text-lg"><p class="glow-effect">{{ $t('header.aboutMe') }}</p> </router-link>
+        <router-link to="/skills" class="text-lg"><p class="glow-effect">{{ $t('header.skills') }}</p> </router-link>
+        <router-link to="/experience" class="text-lg"><p class="glow-effect">{{ $t('header.experience') }}</p> </router-link>
+        <router-link to="/contact" class="text-lg"><p class="glow-effect">{{ $t('header.contact') }}</p> </router-link>
       </nav>
     </section>
 

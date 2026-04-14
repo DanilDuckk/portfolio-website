@@ -22,7 +22,7 @@ const extractColor = () => {
   ctx.drawImage(img, 0, 0, size, size)
 
   const imageData = ctx.getImageData(0, 0, size, size).data
-  const colorCounts = {}
+  const colorCounts: Record<string, number> = {}
 
   for (let i = 0; i < imageData.length; i += 4) {
     const r = imageData[i]
@@ -30,19 +30,32 @@ const extractColor = () => {
     const b = imageData[i + 2]
     const a = imageData[i + 3]
 
-    if (a > 200) {
+    if (a > 125 && (r < 240 || g < 240 || b < 240)) {
       const key = `${Math.floor(r / 10) * 10},${Math.floor(g / 10) * 10},${Math.floor(b / 10) * 10}`
       colorCounts[key] = (colorCounts[key] || 0) + 1
     }
   }
 
-  const sortedColors = Object.entries(colorCounts)
-    .filter(([_, count]) => count > 5)
-    .sort((a, b) => a[1] - b[1])
+  const sortedColors = Object.entries(colorCounts).map(([rgb, count]) => {
+    const [r, g, b] = rgb.split(',').map(Number)
+
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+
+    const score = count * (1 - luminance)
+
+    return { rgb, score, luminance }
+  }).sort((a, b) => b.score - a.score)
 
   if (sortedColors.length > 0) {
-    const [r, g, b] = sortedColors[0][0].split(',')
-    bgColor.value = `rgb(${r}, ${g}, ${b})`
+    const topColor = sortedColors[0]
+
+    if (topColor.luminance > 0.6) {
+      const [r, g, b] = topColor.rgb.split(',').map(c => Math.floor(Number(c) * 0.7))
+      bgColor.value = `rgb(${r}, ${g}, ${b})`
+    } else {
+      const [r, g, b] = topColor.rgb.split(',')
+      bgColor.value = `rgb(${r}, ${g}, ${b})`
+    }
   }
 }
 </script>

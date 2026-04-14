@@ -9,14 +9,12 @@
       {{ $t('aboutMe.title') }}
     </h1>
 
-<p
+    <p
       v-for="(n, index) in 4"
       :key="index + 2"
       v-html="$t(`aboutMe.paragraph_${n}`)"
       class="max-w-[60%]"
       :style="{ '--delay': (index + 1) * 0.2 + 's' }"
     ></p>
-
-
   </TransitionGroup>
 </template>
