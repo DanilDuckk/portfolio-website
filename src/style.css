@@ -89,7 +89,7 @@ body {
 
 .card:hover,
 .card.is-active {
-  max-height: 500px;
+  max-height: 600px;
 }
 
 /* IMAGE */
@@ -102,7 +102,7 @@ body {
 
   transition:
     max-height 0.5s ease,
-    opacity 0.4s ease 0.1s,
+    opacity 0.4s ease,
     margin 0.4s ease;
 }
 
@@ -121,8 +121,8 @@ body {
 
   transition:
     max-height 0.5s ease,
-    opacity 0.3s ease 0.15s,
-    margin 0.3s ease;
+    opacity 0.4s ease,
+    margin 0.4s ease;
 }
 
 .card:hover .card-state,

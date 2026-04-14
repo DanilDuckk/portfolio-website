@@ -78,7 +78,7 @@ const extractColor = () => {
   <section class="select-none card animated-card" :style="{ backgroundColor: bgColor }" @click.stop="toggleCard">
     <img ref="imgRef" :src="img" crossorigin="anonymous" class="card-img" @load="extractColor" />
 
-    <div class="flex flex-row items-center justify-between mb-2">
+    <div class="flex flex-row items-center justify-between">
       <h2>{{ $t(title) }}</h2>
       <component :is="icon" class="w-8 h-8 text-white" />
     </div>
