@@ -80,7 +80,7 @@ export const technical_skills: Skill[] = [
   {
     title: 'skills.technical.rust.title',
     description: 'skills.technical.rust.description',
-    state: 'states.intermediate',
+    state: 'states.beginner',
     img: RustImg,
     icon: CodeXml,
   },
@@ -101,7 +101,7 @@ export const technical_skills: Skill[] = [
   {
     title: 'skills.technical.sql.title',
     description: 'skills.technical.sql.description',
-    state: 'states.intermediate',
+    state: 'states.expert',
     img: SqlImg,
     icon: Database,
   },
@@ -111,7 +111,7 @@ export const non_technical_skills: Skill[] = [
   {
     title: 'skills.non_technical.figma.title',
     description: 'skills.non_technical.figma.description',
-    state: 'states.intermediate',
+    state: 'states.expert',
     img: FigmaImg,
     icon: Wallpaper,
   },
@@ -132,14 +132,14 @@ export const non_technical_skills: Skill[] = [
   {
     title: 'skills.non_technical.adaptability.title',
     description: 'skills.non_technical.adaptability.description',
-    state: 'states.intermediate',
+    state: 'states.expert',
     img: AdaptabilityImg,
     icon: Star,
   },
   {
     title: 'skills.non_technical.communication.title',
     description: 'skills.non_technical.communication.description',
-    state: 'states.intermediate',
+    state: 'states.expert',
     img: CommunicationImg,
     icon: Speech,
   },

@@ -18,7 +18,7 @@ const messages = {
     },
 
     // Contact
-    сontact: {
+    contact: {
       title: 'Get In Touch!',
       description:
         'Whether you’re interested in collaborating or just want to </br> say hello, my inbox is always open. Feel free to reach out <br /> and I’ll get back to you as soon as possible!',
@@ -137,6 +137,7 @@ const messages = {
       },
     },
 
+    // States
     states: {
       beginner: 'Beginner',
       intermediate: 'Intermediate',
@@ -199,6 +200,7 @@ const messages = {
         'Зрештою, я з великим ентузіазмом займаюся розробкою додатків, які приносять реальну користь клієнтам і користувачам. Я пишаюся тим, що створюю високоякісний, ефективний і добре структурований код, і найкраще працюю в середовищах, що сприяють навчанню, експериментам та командній роботі!',
     },
 
+    // Навички
     skills: {
       technical: {
         title: 'Технічні навички',
@@ -298,12 +300,14 @@ const messages = {
       },
     },
 
+    // Статуси
     states: {
       beginner: 'Початківець',
       intermediate: 'Середній рівень',
       expert: 'Експерт',
     },
 
+    // Досвіди
     experiences: {
       cybermeister: {
         job: 'Стажер-розробник та Junior Developer',
