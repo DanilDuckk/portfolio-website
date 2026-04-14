@@ -1,5 +1,5 @@
 import type { Experience } from '@/types/experience'
-import CybermeisterImg from '@/assets/experiences/cybermeister.png'
+import CybermeisterImg from '@/assets/experiences/Cybermeister.png'
 import DanaveroImg from '@/assets/experiences/Danavero.png'
 import TopicusImg from '@/assets/experiences/Topicus.png'
 
